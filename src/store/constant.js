@@ -1,0 +1,37 @@
+// theme constant
+export const gridSpacing = 3;
+export const drawerWidth = 260;
+export const appDrawerWidth = 320;
+// action - customization reducer
+export const SET_MENU = '@customization/SET_MENU';
+export const MENU_TOGGLE = '@customization/MENU_TOGGLE';
+export const MENU_OPEN = '@customization/MENU_OPEN';
+export const SET_FONT_FAMILY = '@customization/SET_FONT_FAMILY';
+export const SET_BORDER_RADIUS = '@customization/SET_BORDER_RADIUS';
+//Actions
+export const AUTH_LOADING = 'AUTH_LOADING';
+export const TOKEN_FETCH = 'TOKEN_FETCH';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const CREATE_STORE = 'CREATE_STORE';
+export const FETCH_STORE = 'FETCH_STORE';
+export const FETCH_STORES = 'FETCH_STORES';
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+export const LOAD_PRODUCT = 'LOAD_PRODUCT';
+export const LOAD_PRODUCTS_ERROR = 'LOAD_PRODUCTS_ERROR';
+export const LOAD_STORES = 'LOAD_STORES';
+export const LOAD_STORE = 'LOAD_STORE';
+export const LOAD_STORE_ERROR = 'LOAD_STORE_ERROR';
+export const LOAD_STORES_ERROR = 'LOAD_STORES_ERROR';
+export const NEW_STORE_SUCCESS = 'NEW_STORE_SUCCESS';
+export const NEW_STORE_FAILURE = 'NEW_STORE_FAILURE';
+export const LOAD_STORE_ITEMS = 'LOAD_STORE_ITEMS';
+export const LOAD_STORE_ITEMS_FAILURE = 'LOAD_STORE_ITEMS_FAILURE';
+export const NEW_STORE_ITEM_SUCCESS = 'NEW_STORE_ITEM_SUCCESS';
+export const NEW_STORE_ITEM_FAILURE = 'NEW_STORE_ITEM_FAILURE';
+export const LOADING_DATA = 'LOADING_DATA';
