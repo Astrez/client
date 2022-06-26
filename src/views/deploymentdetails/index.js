@@ -1,14 +1,14 @@
 import { Typography } from '@mui/material';
-
+import './index.css'
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import React from 'react'
 
 const DeploymentDetails = () => (
-  <MainCard title="Create Deployment"style={{ textAlign: 'center' }}>
+  <MainCard title="Deployment Details"style={{ textAlign: 'center' }}>
       <Typography variant="body2">
         <center>
-        <table style={{"borderWidth":"1px", 'borderColor':"#aaaaaa", 'borderStyle':'solid'}}>
+        <table>
         <tr>
           <th>Revision</th>
           <th>Container_Name</th>

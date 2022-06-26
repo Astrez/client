@@ -1,6 +1,7 @@
 import React from 'react'
 import MainCard from 'ui-component/cards/MainCard';
 import Switch from '@mui/material/Switch';
+import './index.css'  
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const handleUpload=()=>{
   
@@ -13,12 +14,11 @@ const index=()=> (
     Scale factor   : {"   "}    
       <input type="number" name="scalefactor"/>
     </label>
-    <input type="submit" value="Submit"/>
+    <input type="submit" value=" Submit" style={{borderRadius:'24px',width:'100px'}}/>
     </form>
-    </center>
-    <center>
-      <br/>
-      <br/>
+   <br/>
+   <br/>
+   
   <label className = "switch">
     Enable Auto Scaling    :
     <Switch {...label} />
@@ -26,7 +26,7 @@ const index=()=> (
 </center>
 <center>
 
-<p style={{fontSize:'16px'}}>OR Manually upload a dataset to run</p>
+<p style={{fontSize:'16px',color:'black'}}>OR Manually upload a dataset to run</p>
 <form>
           <input type="file" />
           <button type="submit" onSubmit={handleUpload}>Upload</button>

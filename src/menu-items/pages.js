@@ -19,13 +19,13 @@ const deployment = {
             type: 'collapse',
             icon: icons.IoRocket,
             children: [
-                {
-                    id: 'start-deployment',
-                    title: 'Start Deployment',
-                    type: 'item',
-                    url: '/deployment/start',
-                    icon: icons.IoBuildSharp,
-                },
+                // {
+                //     id: 'start-deployment',
+                //     title: 'Start Deployment',
+                //     type: 'item',
+                //     url: '/deployment/start',
+                //     icon: icons.IoBuildSharp,
+                // },
                 {
                     id:'create-deployment',
                     title:'Create Deployment',
@@ -49,8 +49,8 @@ const deployment = {
                 },
                 {
                     url: '/deployment/pod',
-                    id:'replace-replicas',
-                    title:'Replace Replica',
+                    id:'pod-details',
+                    title:'Pod Details',
                     type:'item',
                     icon: icons.IoBuildSharp,
                 },
