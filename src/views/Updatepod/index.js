@@ -1,0 +1,29 @@
+import { Typography } from '@mui/material';
+
+// project imports
+import MainCard from 'ui-component/cards/MainCard';
+
+const UpdateDeployment = () => (
+  <MainCard title="Update Deployment containerImage"> 
+    <Typography variant="body2">
+    <form>
+        <label>
+           Deployment Name : 
+        
+        <input type="text"name="deploymentName"/>
+        </label>
+    
+    <label>
+        Image :
+    <input type="text" name="image"/>
+    </label>
+    <label>
+        Namespace :
+    <input type="text" name="namespace"/>
+    </label>
+    </form>
+        </Typography>
+    </MainCard>
+);
+
+export default UpdateDeployment;

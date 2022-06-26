@@ -7,6 +7,9 @@ import { Navigate } from 'react-router-dom';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 import MinimalLayout from '../layout/MinimalLayout';
+import UpdateDeployment from 'views/Updatepod';
+import DeleteDeployment from 'views/deletedeployment';
+import Metrics from 'views/metrics';
 
 // login option 3 routing
 const AuthLogin = Loadable(lazy(() => import('../views/pages/authentication/authentication/Login')));
@@ -24,6 +27,12 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
+const CreateDeployment = Loadable(lazy(() => import('views/deployment/createdeployment')));
+const DeploymentDetails = Loadable(lazy(() => import ('views/deploymentdetails/index')));
+const ReplaceReplicas = Loadable(lazy(()=> import('views/replacereplicas/index')));
+const PodDetails = Loadable(lazy(()=> import('views/pod/index')));
+const AutoScalar = Loadable(lazy(()=> import('views/Autoscaler/index')));
+
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
@@ -37,9 +46,47 @@ export default function ThemeRoutes() {
                     path: '/',
                     element: <DashboardDefault />
                 },
+
                 {
                     path: '/dashboard',
                     element: <DashboardDefault />
+                },
+                {
+                    path: '/deployment/start',
+                   element:<CreateDeployment />
+                },
+                {
+                    path: '/deployment/createdeployment',
+                   element:<CreateDeployment />
+                },
+                {
+                    path: '/deployment/deploymentdetails',
+                   element:<DeploymentDetails  />
+                },
+                {
+                    path: '/deployment/replacereplicas',
+                   element:<ReplaceReplicas  />
+                },
+                {
+                    path: '/deployment/pod',
+                   element:<PodDetails  />
+                },
+                {
+                    path: '/deployment/Updatedeployment',
+                   element:<UpdateDeployment  />
+                },
+                {
+                    path: '/deployment/deletedeployment',
+                   element:<DeleteDeployment />
+                },
+                {
+                    path: '/deployment/autoscaler',
+                   element:<AutoScalar />
+                },
+
+                {
+                    path:'/deployment/metrics',
+                    element:<Metrics/>
                 },
                 {
                     path: '/utils/util-typography',
@@ -84,18 +131,6 @@ export default function ThemeRoutes() {
                 { path: '*', element: <Navigate to="/404" /> }
             ]
         },
-        {
-            path: '/deployment',
-            element: <MainLayout />,
-            children: [
-                {
-                    path: '/start'
-                },
-                {
-                    path: '/register',
-                    element: isLoggedIn ? <Navigate to="/dashboard" /> : <AuthRegister />
-                }
-            ]
-        }
+        
     ]);
 }
