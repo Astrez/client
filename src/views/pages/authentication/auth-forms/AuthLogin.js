@@ -16,8 +16,7 @@ import {
     InputLabel,
     OutlinedInput,
     Stack,
-    Typography,
-    
+    Typography
 } from '@mui/material';
 
 // third party
@@ -42,7 +41,6 @@ const DefaultLogin = ({ ...others }) => {
     const scriptedRef = useScriptRef();
     const [checked, setChecked] = useState(true);
 
-
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -53,24 +51,16 @@ const DefaultLogin = ({ ...others }) => {
     };
 
     const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const handleLogin = (values) => {
-		console.log(values);
-		console.log(`dispatching login action`);
-		dispatch(login(values));
-		navigate('/dashboard');
-	};
+    const navigate = useNavigate();
+    const handleLogin = (values) => {
+        console.log(values);
+        console.log(`dispatching login action`);
+        dispatch(login(values));
+        navigate('/dashboard');
+    };
 
     return (
         <>
-            <Grid container direction="column" justifyContent="center" spacing={2}>
-                <Grid item xs={12} container alignItems="center" justifyContent="center">
-                    <Box sx={{ mb: 2 }}>
-                        <Typography variant="subtitle1">Sign in</Typography>
-                    </Box>
-                </Grid>
-            </Grid>
-
             <Formik
                 initialValues={{
                     username: 'admin',
@@ -100,7 +90,11 @@ const DefaultLogin = ({ ...others }) => {
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit} {...others}>
-                        <FormControl fullWidth error={Boolean(touched.username && errors.username)} sx={{ ...theme.typography.customInput }}>
+                        <FormControl
+                            fullWidth
+                            error={Boolean(touched.username && errors.username)}
+                            sx={{ ...theme.typography.customInput }}
+                        >
                             <InputLabel htmlFor="outlined-adornment-username-login">Email Address / Username</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-username-login"

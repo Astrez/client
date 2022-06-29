@@ -33,10 +33,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
-import User1 from 'assets/images/users/user-round.svg';
+import User1 from 'assets/images/users/user-circle.svg';
 
 // assets
-import { IoSearchCircleSharp, IoSettings } from 'react-icons/io5';
+import { IoSearchCircleSharp, IoSettingsOutline } from 'react-icons/io5';
+import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { logOut } from 'store/actions/authActions';
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -123,7 +124,7 @@ const ProfileSection = () => {
                         color="inherit"
                     />
                 }
-                label={<IoSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.main} />}
+                label={<IoSettingsOutline size="1.5rem" color={theme.palette.primary.main} />}
                 variant="outlined"
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -206,7 +207,7 @@ const ProfileSection = () => {
                                                     onClick={(event) => handleListItemClick(event, 0, '/dashboard')}
                                                 >
                                                     <ListItemIcon>
-                                                        <IoSettings stroke={1.5} size="1.3rem" />
+                                                        <CgProfile stroke={1.5} size="1.3rem" />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
                                                 </ListItemButton>
@@ -244,7 +245,7 @@ const ProfileSection = () => {
                                                     onClick={handleLogout}
                                                 >
                                                     <ListItemIcon>
-                                                        <IoSettings stroke={1.5} size="1.3rem" />
+                                                        <CgLogOut stroke={1.5} size="1.3rem" />
                                                     </ListItemIcon>
                                                     <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
                                                 </ListItemButton>

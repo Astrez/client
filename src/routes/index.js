@@ -27,11 +27,11 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
-const CreateDeployment = Loadable(lazy(() => import('views/deployment/createdeployment')));
-const DeploymentDetails = Loadable(lazy(() => import ('views/deploymentdetails/index')));
-const ReplaceReplicas = Loadable(lazy(()=> import('views/replacereplicas/index')));
-const PodDetails = Loadable(lazy(()=> import('views/pod/index')));
-const AutoScalar = Loadable(lazy(()=> import('views/Autoscaler/index')));
+const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
+const DeploymentDetails = Loadable(lazy(() => import('views/deploymentdetails/index')));
+const ReplaceReplicas = Loadable(lazy(() => import('views/replacereplicas/index')));
+const PodDetails = Loadable(lazy(() => import('views/pod/index')));
+const AutoScalar = Loadable(lazy(() => import('views/Autoscaler/index')));
 
 // ==============================|| ROUTING RENDER ||============================== //
 
@@ -52,41 +52,37 @@ export default function ThemeRoutes() {
                     element: <DashboardDefault />
                 },
                 {
-                    path: '/deployment/start',
-                   element:<CreateDeployment />
+                    path: '/deployment/create',
+                    element: <CreateDeployment />
                 },
                 {
-                    path: '/deployment/createdeployment',
-                   element:<CreateDeployment />
+                    path: '/deployment/details',
+                    element: <DeploymentDetails />
                 },
                 {
-                    path: '/deployment/deploymentdetails',
-                   element:<DeploymentDetails  />
-                },
-                {
-                    path: '/deployment/replacereplicas',
-                   element:<ReplaceReplicas  />
+                    path: '/deployment/replace-replicas',
+                    element: <ReplaceReplicas />
                 },
                 {
                     path: '/deployment/pod',
-                   element:<PodDetails  />
+                    element: <PodDetails />
                 },
                 {
-                    path: '/deployment/Updatedeployment',
-                   element:<UpdateDeployment  />
+                    path: '/deployment/update',
+                    element: <UpdateDeployment />
                 },
                 {
-                    path: '/deployment/deletedeployment',
-                   element:<DeleteDeployment />
+                    path: '/deployment/delete',
+                    element: <DeleteDeployment />
                 },
                 {
                     path: '/deployment/autoscaler',
-                   element:<AutoScalar />
+                    element: <AutoScalar />
                 },
 
                 {
-                    path:'/deployment/metrics',
-                    element:<Metrics/>
+                    path: '/deployment/metrics',
+                    element: <Metrics />
                 },
                 {
                     path: '/utils/util-typography',
@@ -130,7 +126,6 @@ export default function ThemeRoutes() {
                 { path: '404', element: <SamplePage /> },
                 { path: '*', element: <Navigate to="/404" /> }
             ]
-        },
-        
+        }
     ]);
 }

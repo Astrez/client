@@ -8,7 +8,6 @@ import { Box, Card, Divider, Grid, Typography } from '@mui/material';
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
 
 // project imports
-import config from 'config';
 import { gridSpacing } from 'store/constant';
 
 // assets
@@ -48,7 +47,7 @@ const Breadcrumbs = ({ card, divider, icon, icons, maxItems, navigation, rightAl
                 if (collapse.type && collapse.type === 'collapse') {
                     getCollapse(collapse);
                 } else if (collapse.type && collapse.type === 'item') {
-                    if (document.location.pathname ===  collapse.url) {
+                    if (document.location.pathname === collapse.url) {
                         setMain(menu);
                         setItem(collapse);
                     }
@@ -144,7 +143,7 @@ const Breadcrumbs = ({ card, divider, icon, icons, maxItems, navigation, rightAl
                                     maxItems={maxItems || 8}
                                     separator={separatorIcon}
                                 >
-                                    <Typography component={Link} to="/" color="inherit" variant="subtitle1" sx={linkSX}>
+                                    <Typography color="inherit" variant="subtitle1" sx={linkSX}>
                                         {icons && <HomeTwoToneIcon sx={iconStyle} />}
                                         {icon && <HomeIcon sx={{ ...iconStyle, mr: 0 }} />}
                                         {!icon && 'Dashboard'}

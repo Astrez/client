@@ -11,7 +11,7 @@ import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
 
 // assets
-import { IoMenu, IoSettings } from 'react-icons/io5';
+import { IoMenu } from 'react-icons/io5';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 

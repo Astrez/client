@@ -11,7 +11,7 @@ import NavItem from '../NavItem';
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { IoSettings } from 'react-icons/io5';
+import { IoArrowUp, IoArrowDown } from 'react-icons/io5';
 
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
@@ -86,9 +86,9 @@ const NavCollapse = ({ menu, level }) => {
                     }
                 />
                 {open ? (
-                    <IoSettings stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                    <IoArrowUp size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
                 ) : (
-                    <IoSettings stroke={1.5} size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+                    <IoArrowDown size="1rem" style={{ marginTop: 'auto', marginBottom: 'auto' }} />
                 )}
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
