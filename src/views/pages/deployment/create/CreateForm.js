@@ -72,13 +72,14 @@ export default function CreateForm({ handleSubmit, ...others }) {
         <form noValidate onSubmit={formik.handleSubmit} {...others}>
             <Grid container spacing={2}>
                 {formik.values.fields.map((field, id) => {
-                    console.log(field);
                     let error = formik.errors[field.name];
-                    console.log(error);
-
+                    let touched = formik.touched[field.name];
+                    console.log(error, '->', touched, '->', Boolean(error) && touched, Boolean(error), Boolean(touched));
                     return (
                         <Grid item xs={4} key={id}>
                             <FormInput
+                                showError={Boolean(error) && touched}
+                                touched={touched}
                                 error={error}
                                 theme={theme}
                                 value={formik.values.fields[field.name]}

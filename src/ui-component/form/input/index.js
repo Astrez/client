@@ -1,7 +1,7 @@
 import React from 'react';
 // material-ui
 import { FormControl, FormHelperText, InputLabel, OutlinedInput } from '@mui/material';
-export default function FormInput({ theme, value, handleBlur, handleChange, error, title, type, name }) {
+export default function FormInput({ showError, theme, value, handleBlur, handleChange, error, title, type, name }) {
     return (
         <FormControl fullWidth error={Boolean(error)} sx={{ ...theme.typography.customInput }}>
             <InputLabel htmlFor={`outlined-adornment-${name}`}>{title}</InputLabel>
@@ -15,7 +15,7 @@ export default function FormInput({ theme, value, handleBlur, handleChange, erro
                 label={title}
                 inputProps={{}}
             />
-            {error && (
+            {showError && (
                 <FormHelperText error id="standard-weight-helper-text">
                     {error}
                 </FormHelperText>
