@@ -8,7 +8,7 @@ export const MENU_TOGGLE = '@customization/MENU_TOGGLE';
 export const MENU_OPEN = '@customization/MENU_OPEN';
 export const SET_FONT_FAMILY = '@customization/SET_FONT_FAMILY';
 export const SET_BORDER_RADIUS = '@customization/SET_BORDER_RADIUS';
-//Actions
+// action - Auth
 export const AUTH_LOADING = 'AUTH_LOADING';
 export const TOKEN_FETCH = 'TOKEN_FETCH';
 export const USER_LOADED = 'USER_LOADED';

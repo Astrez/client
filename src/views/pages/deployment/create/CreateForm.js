@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -6,7 +6,6 @@ import { Box, FormHelperText, Grid, MenuItem, InputLabel, Select, Button, FormCo
 
 // third party
 import { useFormik } from 'formik';
-import { v4 as uuid } from 'uuid';
 
 //project imports
 import useScriptRef from 'hooks/useScriptRef';
@@ -17,11 +16,14 @@ import Schema from './schema';
 export default function CreateForm({ handleSubmit, ...others }) {
     const scriptedRef = useScriptRef();
     const theme = useTheme();
+    let optionList = Schema.optionList;
+    const [customOptionList, setCustomOptionList] = useState([]);
     const formik = useFormik({
         initialValues: {
             fields: Schema.initialValues
         },
-        onSubmit: async (values, { setErrors, setStatus, setSubmitting }) => {
+        onSubmit: (values, { setStatus, setSubmitting, setErrors }) => {
+            console.log(values);
             try {
                 if (scriptedRef.current) {
                     setStatus({ success: true });
@@ -41,7 +43,15 @@ export default function CreateForm({ handleSubmit, ...others }) {
     });
 
     const handleAddField = () => {
-        formik.setFieldValue('fields', [...formik.values.fields, { id: uuid(), name: '', value: '' }]);
+        if (selectedItem === '') return;
+        const currentSelection = optionList.find((option) => option.name === selectedItem);
+        optionList = optionList.map((option) => {
+            if (option.name === selectedItem) option.isSelected = true;
+            return option;
+        });
+        setCustomOptionList([...customOptionList, currentSelection]);
+        setSelectedItem('');
+        formik.setFieldValue('fields', [...formik.values.fields, currentSelection]);
     };
 
     const handleRemoveField = (id) => {
@@ -50,18 +60,28 @@ export default function CreateForm({ handleSubmit, ...others }) {
             formik.values.fields.filter((field) => field.id !== id)
         );
     };
-    const [select, setSelect] = useState('');
+    const handleOnSelectedItemChange = (event) => {
+        const {
+            target: { value }
+        } = event;
+        if (value === '') return;
+        setSelectedItem(value);
+    };
+    const [selectedItem, setSelectedItem] = useState('');
     return (
         <form noValidate onSubmit={formik.handleSubmit} {...others}>
             <Grid container spacing={2}>
                 {formik.values.fields.map((field, id) => {
+                    console.log(field);
+                    let error = formik.errors[field.name];
+                    console.log(error);
+
                     return (
                         <Grid item xs={4} key={id}>
                             <FormInput
-                                touched={formik.touched[field.name]}
-                                error={formik.errors[field.name]}
+                                error={error}
                                 theme={theme}
-                                value={formik.values.fields.deploymentName}
+                                value={formik.values.fields[field.name]}
                                 handleBlur={formik.handleBlur}
                                 handleChange={formik.handleChange}
                                 type={field.type || 'text'}
@@ -76,24 +96,31 @@ export default function CreateForm({ handleSubmit, ...others }) {
                         <Grid item xs={4}>
                             <FormControl fullWidth>
                                 <InputLabel id="open-select-item">Item List</InputLabel>
-                                <Select value={select} onClick={() => {}} onChange={() => {}}>
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value={'field1'}>Field 1</MenuItem>
-                                    <MenuItem value={'field2'}>Field 2</MenuItem>
+                                <Select
+                                    labelId="open-select-item"
+                                    id="demo-simple-select"
+                                    value={selectedItem}
+                                    label="Item List"
+                                    onChange={handleOnSelectedItemChange}
+                                >
+                                    {optionList.map((option) => (
+                                        <MenuItem disabled={option.isSelected} key={option.id} value={option.name}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
                                 </Select>
                             </FormControl>
                         </Grid>
                         <Grid item xs={2}>
                             <Box>
-                                <Button variant="contained" color="secondary">
+                                <Button onClick={handleAddField} variant="contained" color="secondary">
                                     Add
                                 </Button>
                             </Box>
                         </Grid>
                     </Grid>
                 </Grid>
+
                 {formik.errors.submit && (
                     <Grid item xs={4}>
                         <Box sx={{ mt: 3 }}>
