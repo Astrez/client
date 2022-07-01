@@ -59,7 +59,7 @@ const CreateDeployment = ({ ...others }) => {
                     </Box>
                 </Grid>
             </Grid>
-            <Grid container>
+            <Grid container justifyContent={'center'}>
                 <Grid item>
                     <FileUpload />
                 </Grid>

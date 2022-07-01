@@ -14,7 +14,6 @@ const optionList = [
 const createDeploymentSchema = Yup.object().shape({
     deploymentName: Yup.string().min(3).max(255).required('Deployment Name is required'),
     containerName: Yup.string().min(3).max(255).required('Container Name is required'),
-    containerName1: Yup.string().min(3).max(255).required('Container Name is required'),
     containerImage: Yup.string().min(3).max(255).required('Container Image is required'),
     deploymentNamespace: Yup.string().min(3).max(255).required('Deployment Namespace is required'),
     port: Yup.number().min(3).max(255).required('Port is required'),

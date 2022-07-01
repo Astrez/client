@@ -74,7 +74,6 @@ export default function CreateForm({ handleSubmit, ...others }) {
                 {formik.values.fields.map((field, id) => {
                     let error = formik.errors[field.name];
                     let touched = formik.touched[field.name];
-                    console.log(error, '->', touched, '->', Boolean(error) && touched, Boolean(error), Boolean(touched));
                     return (
                         <Grid item xs={4} key={id}>
                             <FormInput
@@ -130,7 +129,7 @@ export default function CreateForm({ handleSubmit, ...others }) {
                     </Grid>
                 )}
                 <Grid container justifyContent="center" alignItems="center">
-                    <Box sx={{ mt: 2, width: '50%' }}>
+                    <Box sx={{ mt: 2, width: '50%', textAlign: 'center', maxWidth: '300px' }}>
                         <AnimatedButton
                             fullWidth
                             disableElevation
