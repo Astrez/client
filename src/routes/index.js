@@ -29,7 +29,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
-const ReplaceReplicas = Loadable(lazy(() => import('views/replacereplicas/index')));
+const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
 const PodDetails = Loadable(lazy(() => import('views/pod/index')));
 const AutoScalar = Loadable(lazy(() => import('views/Autoscaler/index')));
 
