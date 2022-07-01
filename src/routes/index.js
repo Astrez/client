@@ -28,7 +28,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
-const DeploymentDetails = Loadable(lazy(() => import('views/deploymentdetails/index')));
+const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
 const ReplaceReplicas = Loadable(lazy(() => import('views/replacereplicas/index')));
 const PodDetails = Loadable(lazy(() => import('views/pod/index')));
 const AutoScalar = Loadable(lazy(() => import('views/Autoscaler/index')));
