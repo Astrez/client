@@ -1,30 +1,20 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
+import AutoScaleForm from './form/AutoScaleForm';
 
-// project imports
-import MainCard from 'ui-component/cards/MainCard';
-
-// material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Divider, Button, Grid } from '@mui/material';
-
-// project imports
-import FileUpload from './FileUpload';
-import CreateForm from './CreateForm';
-
-// ==============================|| Create Deployment Page ||============================== //
-
-const CreateDeployment = ({ ...others }) => {
+import MainCard from 'ui-component/cards/MainCard';
+import { Grid, Box, Divider, Button } from '@mui/material';
+import FileUpload from './form/FileUpload';
+const AutoScale = () => {
     const theme = useTheme();
-    const customization = useSelector((state) => state.customization);
     const handleSubmit = (values) => {
         console.log(values);
     };
-
     return (
-        <MainCard title="Create Deployment">
+        <MainCard title="Autoscaler">
             <Grid container>
                 <Grid item xs={12}>
-                    <CreateForm handleSubmit={handleSubmit} {...others} />
+                    <AutoScaleForm handleSubmit={handleSubmit} />
                 </Grid>
                 <Grid item xs={12}>
                     <Box
@@ -44,8 +34,7 @@ const CreateDeployment = ({ ...others }) => {
                                 px: 7,
                                 borderColor: `${theme.palette.grey[100]} !important`,
                                 color: `${theme.palette.grey[900]}!important`,
-                                fontWeight: 500,
-                                borderRadius: `${customization.borderRadius}px`
+                                fontWeight: 500
                             }}
                             disableRipple
                             disabled
@@ -65,5 +54,4 @@ const CreateDeployment = ({ ...others }) => {
         </MainCard>
     );
 };
-
-export default CreateDeployment;
+export default AutoScale;

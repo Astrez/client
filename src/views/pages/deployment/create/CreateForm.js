@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, FormHelperText, Grid, MenuItem, InputLabel, Select, Button, FormControl, Divider } from '@mui/material';
+import { Box, FormHelperText, Grid, MenuItem, InputLabel, Select, Button, FormControl } from '@mui/material';
 
 // third party
 import { useFormik } from 'formik';
@@ -54,12 +54,12 @@ export default function CreateForm({ handleSubmit, ...others }) {
         formik.setFieldValue('fields', [...formik.values.fields, currentSelection]);
     };
 
-    const handleRemoveField = (id) => {
-        formik.setFieldValue(
-            'fields',
-            formik.values.fields.filter((field) => field.id !== id)
-        );
-    };
+    // const handleRemoveField = (id) => {
+    //     formik.setFieldValue(
+    //         'fields',
+    //         formik.values.fields.filter((field) => field.id !== id)
+    //     );
+    // };
     const handleOnSelectedItemChange = (event) => {
         const {
             target: { value }
