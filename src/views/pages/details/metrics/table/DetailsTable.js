@@ -15,10 +15,7 @@ export default function DetailsTable() {
         return {
             name,
             calories,
-            fat,
-            carbs,
-            protein,
-            price
+            fat
         };
     }
 

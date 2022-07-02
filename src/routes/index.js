@@ -7,7 +7,6 @@ import { Navigate } from 'react-router-dom';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 import MinimalLayout from '../layout/MinimalLayout';
-import Metrics from 'views/metrics';
 
 // login option 3 routing
 const AuthLogin = Loadable(lazy(() => import('../views/pages/authentication/authentication/Login')));
@@ -21,7 +20,8 @@ const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
 const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
-const PodDetails = Loadable(lazy(() => import('views/pod/index')));
+const PodDetails = Loadable(lazy(() => import('views/pages/details/pod')));
+const Metrics = Loadable(lazy(() => import('views/pages/details/metrics')));
 const AutoScalar = Loadable(lazy(() => import('views/pages/autoscaler')));
 const UpdateDeployment = Loadable(lazy(() => import('views/pages/deployment/update')));
 const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/delete')));

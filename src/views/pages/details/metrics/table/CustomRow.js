@@ -22,11 +22,8 @@ export default function CustomRow(props) {
                 <StyledTableCell component="th" scope="row">
                     {row.name}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="center">{row.calories}</StyledTableCell>
+                <StyledTableCell align="center">{row.fat}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
                 <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
