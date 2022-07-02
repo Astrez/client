@@ -7,8 +7,6 @@ import { Navigate } from 'react-router-dom';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 import MinimalLayout from '../layout/MinimalLayout';
-import UpdateDeployment from 'views/Updatepod';
-import DeleteDeployment from 'views/deletedeployment';
 import Metrics from 'views/metrics';
 
 // login option 3 routing
@@ -18,21 +16,15 @@ const AuthRegister = Loadable(lazy(() => import('../views/pages/authentication/a
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
-// utilities routing
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
-const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
-const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
-const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
-
-// sample page routing
+// page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
 const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
 const PodDetails = Loadable(lazy(() => import('views/pod/index')));
-const AutoScalar = Loadable(lazy(() => import('views/Autoscaler/index')));
-
+const AutoScalar = Loadable(lazy(() => import('views/pages/autoscaler')));
+const UpdateDeployment = Loadable(lazy(() => import('views/pages/deployment/update')));
+const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/delete')));
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
@@ -79,30 +71,9 @@ export default function ThemeRoutes() {
                     path: '/deployment/autoscaler',
                     element: <AutoScalar />
                 },
-
                 {
                     path: '/deployment/metrics',
                     element: <Metrics />
-                },
-                {
-                    path: '/utils/util-typography',
-                    element: <UtilsTypography />
-                },
-                {
-                    path: '/utils/util-color',
-                    element: <UtilsColor />
-                },
-                {
-                    path: '/utils/util-shadow',
-                    element: <UtilsShadow />
-                },
-                {
-                    path: '/icons/tabler-icons',
-                    element: <UtilsTablerIcons />
-                },
-                {
-                    path: '/icons/material-icons',
-                    element: <UtilsMaterialIcons />
                 },
                 {
                     path: '/sample-page',

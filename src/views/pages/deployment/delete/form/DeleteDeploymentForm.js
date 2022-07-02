@@ -13,7 +13,7 @@ import FormInput from 'ui-component/form/input';
 import AnimatedButton from 'ui-component/form/button/animated';
 import Schema from './schema';
 
-export default function ReplaceReplicaForm({ handleSubmit, ...others }) {
+export default function DeleteDeploymentForm({ handleSubmit, ...others }) {
     const scriptedRef = useScriptRef();
     const theme = useTheme();
     const formik = useFormik({
@@ -69,20 +69,6 @@ export default function ReplaceReplicaForm({ handleSubmit, ...others }) {
                                 type={'text'}
                                 name={'deploymentNamespace'}
                                 title={'Deployment Namespace'}
-                            />
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FormInput
-                                showError={Boolean(formik.errors.replicas) && formik.touched.replicas}
-                                touched={formik.touched.replicas}
-                                error={formik.errors.replicas}
-                                theme={theme}
-                                value={formik.values.replicas}
-                                handleBlur={formik.handleBlur}
-                                handleChange={formik.handleChange}
-                                type={'text'}
-                                name={'replicas'}
-                                title={'Replicas'}
                             />
                         </Grid>
                     </Grid>

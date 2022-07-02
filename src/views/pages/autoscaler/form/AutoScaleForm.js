@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTheme } from '@mui/material/styles';
 // material-ui
-import { Box, FormHelperText, Grid } from '@mui/material';
+import { Box, FormHelperText, Grid, Switch, FormControlLabel } from '@mui/material';
 
 // third party
 import { useFormik } from 'formik';
@@ -13,7 +13,7 @@ import FormInput from 'ui-component/form/input';
 import AnimatedButton from 'ui-component/form/button/animated';
 import Schema from './schema';
 
-export default function ReplaceReplicaForm({ handleSubmit, ...others }) {
+export default function AutoScaleForm({ handleSubmit, ...others }) {
     const scriptedRef = useScriptRef();
     const theme = useTheme();
     const formik = useFormik({
@@ -45,44 +45,34 @@ export default function ReplaceReplicaForm({ handleSubmit, ...others }) {
                     <Grid container spacing={0.5} direction="row" justifyContent="center" alignItems="center">
                         <Grid item xs={4}>
                             <FormInput
-                                showError={Boolean(formik.errors.deploymentName) && formik.touched.deploymentName}
-                                touched={formik.touched.deploymentName}
-                                error={formik.errors.deploymentName}
+                                showError={Boolean(formik.errors.scaleFactor) && formik.touched.scaleFactor}
+                                touched={formik.touched.scaleFactor}
+                                error={formik.errors.scaleFactor}
                                 theme={theme}
-                                value={formik.values.deploymentName}
+                                value={formik.values.scaleFactor}
                                 handleBlur={formik.handleBlur}
                                 handleChange={formik.handleChange}
-                                type={'text'}
-                                name={'deploymentName'}
-                                title={'Deployment Name'}
+                                type={'number'}
+                                name={'scaleFactor'}
+                                title={'Scale Factor'}
                             />
                         </Grid>
-                        <Grid item xs={4}>
-                            <FormInput
-                                showError={Boolean(formik.errors.deploymentNamespace) && formik.touched.deploymentNamespace}
-                                touched={formik.touched.deploymentNamespace}
-                                error={formik.errors.deploymentNamespace}
-                                theme={theme}
-                                value={formik.values.deploymentNamespace}
-                                handleBlur={formik.handleBlur}
-                                handleChange={formik.handleChange}
-                                type={'text'}
-                                name={'deploymentNamespace'}
-                                title={'Deployment Namespace'}
-                            />
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FormInput
-                                showError={Boolean(formik.errors.replicas) && formik.touched.replicas}
-                                touched={formik.touched.replicas}
-                                error={formik.errors.replicas}
-                                theme={theme}
-                                value={formik.values.replicas}
-                                handleBlur={formik.handleBlur}
-                                handleChange={formik.handleChange}
-                                type={'text'}
-                                name={'replicas'}
-                                title={'Replicas'}
+                        <Grid item xs={12} sx={{ textAlign: 'center' }}>
+                            <FormControlLabel
+                                value="start"
+                                control={
+                                    <Switch
+                                        name="autoScale"
+                                        color={'secondary'}
+                                        value="Y"
+                                        checked={formik.values.autoScale === 'Y'}
+                                        onChange={(event, checked) => {
+                                            formik.setFieldValue('autoScale', checked ? 'Y' : 'N');
+                                        }}
+                                    />
+                                }
+                                label="Enable Autoscaling : "
+                                labelPlacement="start"
                             />
                         </Grid>
                     </Grid>

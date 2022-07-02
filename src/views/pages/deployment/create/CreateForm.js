@@ -54,12 +54,12 @@ export default function CreateForm({ handleSubmit, ...others }) {
         formik.setFieldValue('fields', [...formik.values.fields, currentSelection]);
     };
 
-    const handleRemoveField = (id) => {
-        formik.setFieldValue(
-            'fields',
-            formik.values.fields.filter((field) => field.id !== id)
-        );
-    };
+    // const handleRemoveField = (id) => {
+    //     formik.setFieldValue(
+    //         'fields',
+    //         formik.values.fields.filter((field) => field.id !== id)
+    //     );
+    // };
     const handleOnSelectedItemChange = (event) => {
         const {
             target: { value }
