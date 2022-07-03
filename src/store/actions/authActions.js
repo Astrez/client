@@ -1,28 +1,32 @@
 import axios from 'axios';
-import {
-	USER_LOADED,
-	LOGOUT_SUCCESS,
-} from '../constant';
+import { USER_LOADED, LOGOUT_SUCCESS, AUTH_LOADING, AUTH_ERROR, TOKEN_FETCH } from '../constant';
 
-export const loadUser = () => (dispatch, getState) => {
-	//Headers
-	const config = {
-		headers: {
-			'Content-type': 'application/json',
-		},
-	};
-	//If token is present in local storage
-	const token = getState().auth.token;
-	if (token) {
-		config.headers['Authorization'] = token;
-	} else {
-		return;
-	}
-	//User Loading
-  dispatch({
-				type: USER_LOADED,
-			});
-
+export const loadUser = () => async (dispatch, getState) => {
+    //Headers
+    const config = {
+        headers: {
+            'Content-type': 'application/json'
+        },
+        method: 'GET',
+        url: 'https://0708-202-131-143-233.in.ngrok.io/'
+    };
+    //If token is present in local storage
+    const token = getState().auth.token;
+    if (token) {
+        config.headers['Authorization'] = token;
+    } else {
+        return;
+    }
+    try {
+        const res = await axios(config);
+        const data = res.data;
+        dispatch({ type: USER_LOADED, payload: data });
+    } catch (error) {
+        if (error.response) {
+            let error = new Error('Cannot get user details. Please try again!');
+            throw error;
+        }
+    }
 };
 
 //Register a User
@@ -54,17 +58,33 @@ export const loadUser = () => (dispatch, getState) => {
 // };
 
 //Login a User
-export const login = ({ username, password }) => (dispatch) => {
-	//Headers
-	// dispatch({ type: AUTH_LOADING });
-	dispatch({
-		type: USER_LOADED,
-	});
-};
+export const login =
+    ({ username, password }) =>
+    async (dispatch) => {
+        //Headers
+        const config = {
+            method: 'POST',
+            url: 'https://0708-202-131-143-233.in.ngrok.io/signin',
+            data: { username, password }
+        };
+        dispatch({ type: AUTH_LOADING });
+        try {
+            const res = await axios(config);
+            const data = res.data;
+            dispatch({ type: TOKEN_FETCH, payload: data });
+            dispatch(loadUser());
+        } catch (error) {
+            if (error.response) {
+                dispatch({ type: AUTH_ERROR, payload: { error: error.response.data } });
+                return;
+            }
+            dispatch({ type: AUTH_ERROR, payload: { error: 'Check your credentials or maybe the server is offline' } });
+        }
+    };
 
 //Log User Out
 export const logOut = () => (dispatch) => {
-	dispatch({
-		type: LOGOUT_SUCCESS,
-	});
+    dispatch({
+        type: LOGOUT_SUCCESS
+    });
 };
