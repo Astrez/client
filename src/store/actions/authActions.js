@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, LOGOUT_SUCCESS, AUTH_LOADING, AUTH_ERROR, TOKEN_FETCH } from '../constant';
+import { USER_LOADED, LOGOUT_SUCCESS, AUTH_LOADING, REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR, TOKEN_FETCH } from '../constant';
 
 export const loadUser = () => async (dispatch, getState) => {
     //Headers
@@ -30,32 +30,38 @@ export const loadUser = () => async (dispatch, getState) => {
 };
 
 //Register a User
-// export const register = ({ username, password }) => (dispatch) => {
-// 	//Headers
-// 	const config = {
-// 		headers: {
-// 			'Content-type': 'application/json',
-// 		},
-// 	};
-// 	const body = JSON.stringify({ username, password });
-// 	axios
-// 		.post(`${process.env.REACT_APP_AUTH_API}/admin/register`, body, config)
-// 		.then((res) =>
-// 			dispatch({
-// 				type: REGISTER_SUCCESS,
-// 				payload: res.data,
-// 			})
-// 		)
-// 		.catch((err) => {
-// 			console.log(err.response);
-// 			dispatch({
-// 				type: REGISTER_FAIL,
-// 			});
-// 			dispatch(
-// 				returnErrors(err.response.data, err.response.status, 'Register Fail')
-// 			);
-// 		});
-// };
+export const register =
+    ({ username, password, role = 'U', name }) =>
+    async (dispatch, getState) => {
+        //Headers
+        const config = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/signup',
+            data: { username, password, role, name }
+        };
+        const token = getState().auth.token;
+
+        if (token) {
+            config.headers['Authorization'] = token;
+        } else {
+            return;
+        }
+        try {
+            const res = await axios(config);
+            const data = res.data;
+            dispatch({ type: REGISTER_SUCCESS, payload: data });
+        } catch (error) {
+            if (error.response || error.message) {
+                let errorMessage = error.message;
+                dispatch({ type: REGISTER_FAIL, payload: { error: errorMessage } });
+                throw error;
+            }
+            dispatch({ type: REGISTER_FAIL, payload: { error: 'Maybe the server is offline' } });
+        }
+    };
 
 //Login a User
 export const login =

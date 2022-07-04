@@ -29,13 +29,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 isLoggedIn: true
             };
         case REGISTER_SUCCESS:
-            console.log(`Setting User Token`);
-            localStorage.setItem('token', action.payload.result);
             return {
-                ...state,
-                token: action.payload.result,
-                isLoading: false,
-                isLoggedIn: true
+                ...state
             };
         case AUTH_ERROR:
             return {
@@ -43,8 +38,12 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 isLoading: false,
                 error: action.payload.error
             };
-        case LOGOUT_SUCCESS:
         case REGISTER_FAIL:
+            return {
+                ...state,
+                error: action.payload.data
+            };
+        case LOGOUT_SUCCESS:
             console.log(`Removing User Token`);
             localStorage.removeItem('token');
             return {
@@ -52,8 +51,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 token: null,
                 isLoggedIn: false,
                 isLoading: false,
-                user: null,
-                error: null
+                user: null
             };
         default:
             return state;

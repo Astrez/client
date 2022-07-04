@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -12,9 +13,14 @@ import NavCollapse from '../NavCollapse';
 
 const NavGroup = ({ item }) => {
     const theme = useTheme();
+    const user = useSelector((state) => state.auth.user);
 
     // menu list collapse & items
     const items = item.children?.map((menu) => {
+        if (user && user.role !== 'A' && menu.id === 'register') {
+            console.log('Not an Admin');
+            return <></>;
+        }
         switch (menu.type) {
             case 'collapse':
                 return <NavCollapse key={menu.id} menu={menu} level={1} />;

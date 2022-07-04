@@ -27,7 +27,6 @@ const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/dele
 export default function ThemeRoutes() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const user = useSelector((state) => state.auth.user);
-    console.log(user, 'user');
     return useRoutes([
         {
             path: '/',
@@ -72,7 +71,7 @@ export default function ThemeRoutes() {
                 },
                 {
                     path: '/register',
-                    element: user && user.role !== 'U' ? <Navigate to="/dashboard" /> : <AuthRegister />
+                    element: user && user.role === 'U' ? <Navigate to="/dashboard" /> : <AuthRegister />
                 },
                 { path: '*', element: <Navigate to="/404" /> }
             ]
