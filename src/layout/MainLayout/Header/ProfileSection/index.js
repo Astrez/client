@@ -171,7 +171,7 @@ const ProfileSection = () => {
                                                     width: '100%',
                                                     maxWidth: 350,
                                                     minWidth: 300,
-                                                    backgroundColor: theme.palette.background.paper,
+                                                    backgroundColor: theme.palette.background.default,
                                                     borderRadius: '10px',
                                                     [theme.breakpoints.down('md')]: {
                                                         minWidth: '100%'
