@@ -8,7 +8,7 @@ export const loadUser = () => async (dispatch, getState) => {
             'Content-type': 'application/json'
         },
         method: 'GET',
-        url: 'https://0708-202-131-143-233.in.ngrok.io/'
+        url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/'
     };
     //If token is present in local storage
     const token = getState().auth.token;
@@ -20,7 +20,7 @@ export const loadUser = () => async (dispatch, getState) => {
     try {
         const res = await axios(config);
         const data = res.data;
-        dispatch({ type: USER_LOADED, payload: data });
+        dispatch({ type: USER_LOADED, payload: data.result });
     } catch (error) {
         if (error.response) {
             let error = new Error('Cannot get user details. Please try again!');
@@ -64,7 +64,7 @@ export const login =
         //Headers
         const config = {
             method: 'POST',
-            url: 'https://0708-202-131-143-233.in.ngrok.io/signin',
+            url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/signin',
             data: { username, password }
         };
         dispatch({ type: AUTH_LOADING });
@@ -74,9 +74,10 @@ export const login =
             dispatch({ type: TOKEN_FETCH, payload: data });
             dispatch(loadUser());
         } catch (error) {
-            if (error.response) {
-                dispatch({ type: AUTH_ERROR, payload: { error: error.response.data } });
-                return;
+            if (error.response || error.message) {
+                let errorMessage = error.message;
+                dispatch({ type: AUTH_ERROR, payload: { error: errorMessage } });
+                throw error;
             }
             dispatch({ type: AUTH_ERROR, payload: { error: 'Check your credentials or maybe the server is offline' } });
         }

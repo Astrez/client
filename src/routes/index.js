@@ -12,16 +12,13 @@ import MinimalLayout from '../layout/MinimalLayout';
 const AuthLogin = Loadable(lazy(() => import('../views/pages/authentication/authentication/Login')));
 const AuthRegister = Loadable(lazy(() => import('../views/pages/authentication/authentication/Register')));
 
-// dashboard routing
-const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
-
 // page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
 const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
-const PodDetails = Loadable(lazy(() => import('views/pages/details/pod')));
-const Metrics = Loadable(lazy(() => import('views/pages/details/metrics')));
+const PodDetails = Loadable(lazy(() => import('views/dashboard/details/pod')));
+const Metrics = Loadable(lazy(() => import('views/dashboard/details/metrics')));
 const AutoScalar = Loadable(lazy(() => import('views/pages/autoscaler')));
 const UpdateDeployment = Loadable(lazy(() => import('views/pages/deployment/update')));
 const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/delete')));
@@ -29,6 +26,8 @@ const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/dele
 
 export default function ThemeRoutes() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const user = useSelector((state) => state.auth.user);
+    console.log(user, 'user');
     return useRoutes([
         {
             path: '/',
@@ -36,12 +35,12 @@ export default function ThemeRoutes() {
             children: [
                 {
                     path: '/',
-                    element: <DashboardDefault />
+                    element: <Metrics />
                 },
 
                 {
                     path: '/dashboard',
-                    element: <DashboardDefault />
+                    element: <Metrics />
                 },
                 {
                     path: '/deployment/create',
@@ -72,12 +71,8 @@ export default function ThemeRoutes() {
                     element: <AutoScalar />
                 },
                 {
-                    path: '/deployment/metrics',
-                    element: <Metrics />
-                },
-                {
-                    path: '/sample-page',
-                    element: <SamplePage />
+                    path: '/register',
+                    element: user && user.role !== 'U' ? <Navigate to="/dashboard" /> : <AuthRegister />
                 },
                 { path: '*', element: <Navigate to="/404" /> }
             ]
@@ -90,10 +85,7 @@ export default function ThemeRoutes() {
                     path: '/login',
                     element: isLoggedIn ? <Navigate to="/dashboard" /> : <AuthLogin />
                 },
-                {
-                    path: '/register',
-                    element: isLoggedIn ? <Navigate to="/dashboard" /> : <AuthRegister />
-                },
+
                 { path: '404', element: <SamplePage /> },
                 { path: '*', element: <Navigate to="/404" /> }
             ]

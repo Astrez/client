@@ -2,10 +2,9 @@ import { AUTH_LOADING, USER_LOADED, AUTH_ERROR, LOGOUT_SUCCESS, REGISTER_SUCCESS
 
 const INITIAL_STATE = {
     token: localStorage.getItem('token'),
-    isLoggedIn: localStorage.getItem('token'),
+    isLoggedIn: false,
     isLoading: false,
-    user: null,
-    error: null
+    user: null
 };
 // eslint-disable-next-line import/no-anonymous-default-export
 const authReducer = (state = INITIAL_STATE, action) => {
@@ -41,6 +40,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         case AUTH_ERROR:
             return {
                 ...state,
+                isLoading: false,
                 error: action.payload.error
             };
         case LOGOUT_SUCCESS:
@@ -52,7 +52,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 token: null,
                 isLoggedIn: false,
                 isLoading: false,
-                user: null
+                user: null,
+                error: null
             };
         default:
             return state;
