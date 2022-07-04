@@ -45,7 +45,6 @@ export default function UpdateDeploymentForm({ handleSubmit, ...others }) {
                     <Grid container spacing={0.5} direction="row" justifyContent="center" alignItems="center">
                         <Grid item xs={4}>
                             <FormInput
-                                showError={Boolean(formik.errors.deploymentName) && formik.touched.deploymentName}
                                 touched={formik.touched.deploymentName}
                                 error={formik.errors.deploymentName}
                                 theme={theme}
@@ -59,7 +58,6 @@ export default function UpdateDeploymentForm({ handleSubmit, ...others }) {
                         </Grid>
                         <Grid item xs={4}>
                             <FormInput
-                                showError={Boolean(formik.errors.deploymentNamespace) && formik.touched.deploymentNamespace}
                                 touched={formik.touched.deploymentNamespace}
                                 error={formik.errors.deploymentNamespace}
                                 theme={theme}
@@ -73,7 +71,6 @@ export default function UpdateDeploymentForm({ handleSubmit, ...others }) {
                         </Grid>
                         <Grid item xs={4}>
                             <FormInput
-                                showError={Boolean(formik.errors.containerImage) && formik.touched.containerImage}
                                 touched={formik.touched.containerImage}
                                 error={formik.errors.containerImage}
                                 theme={theme}

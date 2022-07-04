@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom/client';
-
 // third party
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -16,13 +15,13 @@ import './assets/scss/style.scss';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
-
 root.render(
     <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </Provider>);
+    </Provider>
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

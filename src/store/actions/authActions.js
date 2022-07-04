@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { USER_LOADED, LOGOUT_SUCCESS, AUTH_LOADING, REGISTER_SUCCESS, REGISTER_FAIL, AUTH_ERROR, TOKEN_FETCH } from '../constant';
-
+const BASE_URL = 'http://localhost:8000';
 export const loadUser = () => async (dispatch, getState) => {
     //Headers
     const config = {
@@ -8,7 +8,7 @@ export const loadUser = () => async (dispatch, getState) => {
             'Content-type': 'application/json'
         },
         method: 'GET',
-        url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/'
+        url: BASE_URL
     };
     //If token is present in local storage
     const token = getState().auth.token;
@@ -39,7 +39,7 @@ export const register =
             headers: {
                 'Content-type': 'application/json'
             },
-            url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/signup',
+            url: `${BASE_URL}/signup`,
             data: { username, password, role, name }
         };
         const token = getState().auth.token;
@@ -70,7 +70,7 @@ export const login =
         //Headers
         const config = {
             method: 'POST',
-            url: 'http://ec2-52-39-20-223.us-west-2.compute.amazonaws.com:8000/signin',
+            url: `${BASE_URL}/signin`,
             data: { username, password }
         };
         dispatch({ type: AUTH_LOADING });

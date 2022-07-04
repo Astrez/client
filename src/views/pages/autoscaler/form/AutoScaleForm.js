@@ -45,7 +45,6 @@ export default function AutoScaleForm({ handleSubmit, ...others }) {
                     <Grid container spacing={0.5} direction="row" justifyContent="center" alignItems="center">
                         <Grid item xs={4}>
                             <FormInput
-                                showError={Boolean(formik.errors.scaleFactor) && formik.touched.scaleFactor}
                                 touched={formik.touched.scaleFactor}
                                 error={formik.errors.scaleFactor}
                                 theme={theme}
