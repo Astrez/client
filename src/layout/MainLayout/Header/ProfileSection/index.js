@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
@@ -11,12 +11,10 @@ import {
     Chip,
     ClickAwayListener,
     Divider,
-    InputAdornment,
     List,
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    OutlinedInput,
     Paper,
     Popper,
     Stack,
@@ -32,7 +30,7 @@ import Transitions from 'ui-component/extended/Transitions';
 import User1 from 'assets/images/users/user-circle.svg';
 
 // assets
-import { IoSearchCircleSharp, IoSettingsOutline } from 'react-icons/io5';
+import { IoSettingsOutline } from 'react-icons/io5';
 import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { logOut } from 'store/actions/authActions';
 // ==============================|| PROFILE MENU ||============================== //
@@ -44,7 +42,6 @@ const ProfileSection = () => {
     const user = useSelector((state) => state.auth.user);
     const navigate = useNavigate();
 
-    const [value, setValue] = useState('');
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
     /**
@@ -54,6 +51,7 @@ const ProfileSection = () => {
     const dispatch = useDispatch();
     const handleLogout = async () => {
         dispatch(logOut());
+        navigate('/login');
     };
 
     const handleClose = (event) => {
@@ -156,10 +154,12 @@ const ProfileSection = () => {
                                             <Stack direction="row" spacing={0.5} alignItems="center">
                                                 <Typography variant="h4">Good Morning,</Typography>
                                                 <Typography component="span" variant="h4" sx={{ fontWeight: 400 }}>
-                                                    {user.name}
+                                                    {user && user.name}
                                                 </Typography>
                                             </Stack>
-                                            <Typography variant="subtitle2">Project {user.role === 'A' ? 'Admin' : 'User'}</Typography>
+                                            <Typography variant="subtitle2">
+                                                Project {user && user.role === 'A' ? 'Admin' : 'User'}
+                                            </Typography>
                                         </Stack>
                                         <Divider />
                                     </Box>
@@ -194,7 +194,7 @@ const ProfileSection = () => {
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 4}
-                                                    onClick={handleLogout}
+                                                    onClick={() => handleLogout()}
                                                 >
                                                     <ListItemIcon>
                                                         <CgLogOut stroke={1.5} size="1.3rem" />

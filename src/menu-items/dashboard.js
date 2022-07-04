@@ -25,7 +25,7 @@ const dashboard = {
             type: 'item',
             url: '/register',
             icon: icons.IoPersonAdd,
-            breadcrumbs: false
+            breadcrumbs: true
         }
     ]
 };
