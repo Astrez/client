@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -51,13 +51,17 @@ const DefaultLogin = ({ ...others }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleLogin = (values) => {
+    const auth = useSelector((state) => state.auth);
+    const handleLogin = async (values) => {
         console.log(values);
         console.log(`dispatching login action`);
-        dispatch(login(values));
-        navigate('/dashboard');
+        try {
+            await dispatch(login(values));
+        } catch (err) {
+            throw err;
+        }
     };
-
+    if (auth.isLoggedIn) navigate('/dashboard');
     return (
         <>
             <Formik
@@ -74,11 +78,10 @@ const DefaultLogin = ({ ...others }) => {
                     try {
                         if (scriptedRef.current) {
                             setStatus({ success: true });
-                            handleLogin(values);
+                            await handleLogin(values);
                             setSubmitting(false);
                         }
                     } catch (err) {
-                        console.error(err);
                         if (scriptedRef.current) {
                             setStatus({ success: false });
                             setErrors({ submit: err.message });
