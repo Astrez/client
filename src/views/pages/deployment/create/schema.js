@@ -1,15 +1,4 @@
 import * as Yup from 'yup';
-import { v4 as uuid } from 'uuid';
-
-const optionList = [
-    { id: uuid(), name: 'deploymentName1', value: '', label: 'Deployment Name', isSelected: false },
-    { id: uuid(), name: 'containerName1', value: '', label: 'Container Name', isSelected: false },
-    { id: uuid(), name: 'containerImage1', value: '', label: 'Container Image', isSelected: false },
-    { id: uuid(), name: 'deploymentNamespace1', value: '', label: 'Deployment Namespace', isSelected: false },
-    { id: uuid(), name: 'port1', value: '', label: 'Port', type: 'number', isSelected: false },
-    { id: uuid(), name: 'target1', value: '', label: 'Target', isSelected: false },
-    { id: uuid(), name: 'replicas1', value: '', label: 'Replicas', isSelected: false }
-];
 
 const createDeploymentSchema = Yup.object().shape({
     deploymentName: Yup.string().min(3).max(255).required('Deployment Name is required'),
@@ -51,6 +40,5 @@ const initialValues = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     createDeploymentSchema,
-    initialValues,
-    optionList
+    initialValues
 };
