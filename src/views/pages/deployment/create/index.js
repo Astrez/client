@@ -22,10 +22,10 @@ const CreateDeployment = ({ ...others }) => {
     const theme = useTheme();
     const scriptedRef = useScriptRef();
 
-    const [activeStep, setActiveStep] = useState(1);
+    const [activeStep, setActiveStep] = useState(0);
     const steps = ['Deployment Details', 'Service Details'];
     const isLastStep = activeStep === steps.length - 1;
-
+    const currentValidationSchema = Schema.createDeploymentSchema[activeStep];
     function _handleBack() {
         setActiveStep(activeStep - 1);
     }
@@ -66,7 +66,7 @@ const CreateDeployment = ({ ...others }) => {
                         }
                     }
                 }}
-                validationSchema={Schema.createDeploymentSchema}
+                validationSchema={currentValidationSchema}
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => {
                     return (
