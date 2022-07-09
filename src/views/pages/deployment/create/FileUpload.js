@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@mui/material';
 import AnimatedButton from 'ui-component/form/button/animated';
 
-export default function FileUpload() {
+export default function FileUpload({ title }) {
     return (
         <Card style={{ textAlign: 'center' }}>
             <AnimatedButton
@@ -12,7 +12,7 @@ export default function FileUpload() {
                 type="submit"
                 variant="contained"
                 color="secondary"
-                title="Upload YAML File"
+                title={title}
                 component="label"
             >
                 <input type="file" hidden />

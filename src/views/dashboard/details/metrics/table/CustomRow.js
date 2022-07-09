@@ -20,10 +20,10 @@ export default function CustomRow(props) {
                     </IconButton>
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {row.podName}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.calories}</StyledTableCell>
-                <StyledTableCell align="center">{row.fat}</StyledTableCell>
+                <StyledTableCell align="center">{row.cpuUsage}</StyledTableCell>
+                <StyledTableCell align="center">{row.memoryUsage}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
                 <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>

@@ -103,16 +103,27 @@ export default function CreateForm({ errors, handleBlur, handleChange, isSubmitt
                                 title={'Replicas'}
                             />
                         </Grid>
-                        <Box sx={{ mt: 1, mb: 1 }}>
+                        <Box sx={{ mt: 1, mb: 1, width: '100%' }}>
                             <Box sx={{ mb: 2 }}>
                                 <Typography variant="h2" component="h3">
                                     Selectors:
                                 </Typography>
                             </Box>
-                            <Box sx={{ ml: 4 }}>
-                                <Typography variant="h3" component="h3">
-                                    Label(app): {values.label}
-                                </Typography>
+                            <Box>
+                                <Grid>
+                                    <FormInput
+                                        disabled
+                                        touched={'false'}
+                                        error={''}
+                                        theme={theme}
+                                        value={values.label}
+                                        handleBlur={handleBlur}
+                                        handleChange={handleChange}
+                                        type={'text'}
+                                        name={'label'}
+                                        title={'Label'}
+                                    />
+                                </Grid>
                             </Box>
                             <Box sx={{ mb: 2, mt: 2 }}>
                                 <Typography variant="h2" component="h3">
@@ -123,11 +134,22 @@ export default function CreateForm({ errors, handleBlur, handleChange, isSubmitt
                                 <Typography variant="h3" component="h3">
                                     Meta Data:
                                 </Typography>
-                            </Box>{' '}
-                            <Box sx={{ mb: 1, mt: 1, ml: 8 }}>
-                                <Typography variant="h4" component="h3">
-                                    Label(app): {values.label}
-                                </Typography>
+                            </Box>
+                            <Box sx={{ mb: 1, mt: 1 }}>
+                                <Grid>
+                                    <FormInput
+                                        disabled
+                                        touched={'false'}
+                                        error={''}
+                                        theme={theme}
+                                        value={values.label}
+                                        handleBlur={handleBlur}
+                                        handleChange={handleChange}
+                                        type={'text'}
+                                        name={'label'}
+                                        title={'Label'}
+                                    />
+                                </Grid>
                             </Box>
                         </Box>
                     </Grid>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import { Box, Button, Divider, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 
 //project imports
 import FormInput from 'ui-component/form/input';
+import FileUpload from '../FileUpload';
 export default function ServiceDetails({ errors, handleBlur, handleChange, isSubmitting, touched, values, ...others }) {
     const theme = useTheme();
     return (
@@ -140,7 +141,7 @@ export default function ServiceDetails({ errors, handleBlur, handleChange, isSub
                                             <MenuItem value={'NodePort'}>NodePort</MenuItem>
                                             <MenuItem value={'ExternalName'}>ExternalName</MenuItem>
                                         </Select>
-                                        {touched.type && errors.types && (
+                                        {touched.type && errors.type && (
                                             <FormHelperText error id="standard-weight-helper-text">
                                                 {errors.type}
                                             </FormHelperText>
@@ -152,6 +153,40 @@ export default function ServiceDetails({ errors, handleBlur, handleChange, isSub
                     </Grid>
                 </Box>
             </Box>
+            <Grid container justifyContent={'center'}>
+                <Grid item xs={12}>
+                    <Box
+                        sx={{
+                            alignItems: 'center',
+                            display: 'flex'
+                        }}
+                    >
+                        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
+
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                cursor: 'unset',
+                                m: 2,
+                                py: 0.5,
+                                px: 7,
+                                borderColor: `${theme.palette.grey[100]} !important`,
+                                color: `${theme.palette.grey[900]}!important`,
+                                fontWeight: 500
+                            }}
+                            disableRipple
+                            disabled
+                        >
+                            OR
+                        </Button>
+
+                        <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
+                    </Box>
+                </Grid>
+                <Grid item>
+                    <FileUpload title="Upload YAML file for Service" />
+                </Grid>
+            </Grid>
 
             {errors.submit && (
                 <Grid item xs={4}>

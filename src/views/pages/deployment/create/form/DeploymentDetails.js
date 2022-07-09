@@ -61,7 +61,7 @@ export default function DeploymentDetails({
             </Grid>
             <Grid container justifyContent={'center'}>
                 <Grid item>
-                    <FileUpload />
+                    <FileUpload title={'Upload YAML file for Deployment'} />
                 </Grid>
             </Grid>
         </>

@@ -38,7 +38,23 @@ const CreateDeployment = ({ ...others }) => {
             <Box sx={{ mt: 3, mb: 5, ml: 2, mr: 2 }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => (
-                        <Step key={label}>
+                        <Step
+                            key={label}
+                            sx={{
+                                '& .MuiStepLabel-root .Mui-completed': {
+                                    color: 'secondary.dark' // circle color (COMPLETED)
+                                },
+                                '& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel': {
+                                    color: 'grey.500' // Just text label (COMPLETED)
+                                },
+                                '& .MuiStepLabel-root .Mui-active': {
+                                    color: 'secondary.main' // circle color (ACTIVE)
+                                },
+                                '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel': {
+                                    color: 'common.white' // Just text label (ACTIVE)
+                                }
+                            }}
+                        >
                             <StepLabel>{label}</StepLabel>
                         </Step>
                     ))}
