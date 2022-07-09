@@ -2,7 +2,6 @@ import React from 'react';
 import { IconButton, Collapse, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import PropTypes from 'prop-types';
 import DetailCell from './DetailCell';
 import StyledTableRow from 'ui-component/table/StyledTableRow';
 import StyledTableCell from 'ui-component/table/StyledTableCell';
@@ -20,19 +19,19 @@ export default function CustomRow(props) {
                     </IconButton>
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {row.podName}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}asdf</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="left">{row.podIP}</StyledTableCell>
+                <StyledTableCell align="left">{row.namespace}</StyledTableCell>
+                <StyledTableCell align="left">{row.replicas}</StyledTableCell>
+                <StyledTableCell align="center">{row.numberOfContainers}</StyledTableCell>
+                <StyledTableCell align="left">{row.status}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
                 <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
-                            <DetailCell />
+                            <DetailCell containers={row.containers} />
                         </Box>
                     </Collapse>
                 </StyledTableCell>
@@ -40,20 +39,3 @@ export default function CustomRow(props) {
         </>
     );
 }
-CustomRow.propTypes = {
-    row: PropTypes.shape({
-        calories: PropTypes.number.isRequired,
-        carbs: PropTypes.number.isRequired,
-        fat: PropTypes.number.isRequired,
-        history: PropTypes.arrayOf(
-            PropTypes.shape({
-                amount: PropTypes.number.isRequired,
-                customerId: PropTypes.string.isRequired,
-                date: PropTypes.string.isRequired
-            })
-        ).isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        protein: PropTypes.number.isRequired
-    }).isRequired
-};

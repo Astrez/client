@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // import './index.css'
 // project imports
-import axios from 'axios';
 import MainCard from 'ui-component/cards/MainCard';
 import React from 'react';
 import DetailsTable from './table/DetailsTable';

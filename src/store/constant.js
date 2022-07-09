@@ -24,3 +24,5 @@ export const FETCH_ERROR = 'FETCH_ERROR';
 export const DELETE_DEPLOYMENT = 'DELETE_DEPLOYMENT';
 export const REPLACE_REPLICAS = 'REPLACE_REPLICAS';
 export const EDIT_IMAGE = 'EDIT_IMAGE';
+//actions - Pods
+export const FETCH_PODS = 'FETCH_PODS';
