@@ -78,14 +78,6 @@ const deployment = {
                     title: 'Autoscale!',
                     type: 'item',
                     icon: icons.MdOutlineChangeCircle
-                },
-
-                {
-                    url: '/deployment/metrics',
-                    id: 'metrics',
-                    title: 'Get Metrics',
-                    type: 'item',
-                    icon: icons.BiDetail
                 }
             ]
         }

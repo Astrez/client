@@ -5,19 +5,8 @@ import AccordionDetails from './AccordionDetails';
 import { Grid, Typography, Button } from '@mui/material';
 import FormInput from 'ui-component/form/input';
 
-export default function Container({
-    container,
-    errors,
-    touched,
-    theme,
-    values,
-    handleBlur,
-    handleChange,
-    selectedItem,
-    onChange,
-    id,
-    onDelete
-}) {
+function Container({ container, errors, touched, theme, values, handleBlur, handleChange, selectedItem, onChange, id, onDelete }) {
+    console.log('Rendering');
     const defaultErrors = {
         containerName: '',
         containerImage: '',
@@ -155,3 +144,4 @@ export default function Container({
         </Grid>
     );
 }
+export default Container;
