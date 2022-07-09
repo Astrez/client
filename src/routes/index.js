@@ -15,6 +15,8 @@ const AuthRegister = Loadable(lazy(() => import('../views/pages/authentication/a
 // page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/create')));
+const CreateDeploymentFile = Loadable(lazy(() => import('views/pages/deployment/create/upload')));
+const CreateDeploymentForm = Loadable(lazy(() => import('views/pages/deployment/create/form')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
 const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
 const PodDetails = Loadable(lazy(() => import('views/dashboard/details/pod')));
@@ -44,6 +46,14 @@ export default function ThemeRoutes() {
                 {
                     path: '/deployment/create',
                     element: <CreateDeployment />
+                },
+                {
+                    path: '/deployment/create/form',
+                    element: <CreateDeploymentForm />
+                },
+                {
+                    path: '/deployment/create/file',
+                    element: <CreateDeploymentFile />
                 },
                 {
                     path: '/deployment/details',
