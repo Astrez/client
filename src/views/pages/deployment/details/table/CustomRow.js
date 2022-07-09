@@ -29,7 +29,7 @@ export default function CustomRow(props) {
                 <StyledTableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
-                            <DetailCell containers={row.containers} name={row.name} namespace={row.namespace} />
+                            <DetailCell containers={row.containers} name={row.name} namespace={row.namespace} replicas={row.replicas} />
                         </Box>
                     </Collapse>
                 </StyledTableCell>

@@ -7,9 +7,12 @@ import StyledTableRow from 'ui-component/table/StyledTableRow';
 import { useDispatch } from 'react-redux';
 import { deleteDeployment, editImage, editReplicas } from 'store/actions/deploymentActions';
 import CustomDialog from './container-image';
+import ReplicasDialog from './replicas';
 
-export default function DetailCell({ containers, name, namespace }) {
+export default function DetailCell({ containers, name, namespace, replicas }) {
     const [selectedContainer, setSelectedContainer] = React.useState(null);
+    const [editReplicaDialog, setEditReplicaDialog] = React.useState(false);
+    const [editReplica, setEditReplica] = React.useState(replicas);
 
     const dispatch = useDispatch();
     console.log('rendering');
@@ -17,9 +20,14 @@ export default function DetailCell({ containers, name, namespace }) {
         const data = { name, namespace };
         dispatch(deleteDeployment(data));
     };
-    const handleEditReplicas = () => {
-        const data = { name, namespace, replicas: 1 };
+    const handleEditReplica = () => {
+        const data = { name, namespace, replicas: parseInt(editReplica) };
+        console.log(data);
         dispatch(editReplicas(data));
+        setEditReplicaDialog(false);
+    };
+    const toggleEditReplica = () => {
+        setEditReplicaDialog(!editReplicaDialog);
     };
     const handleEditImage = () => {
         const data = { name, namespace, containerName: selectedContainer.containerName, containerImage: selectedContainer.containerImage };
@@ -41,6 +49,13 @@ export default function DetailCell({ containers, name, namespace }) {
                     handleSubmit={handleEditImage}
                 />
             )}
+            <ReplicasDialog
+                open={editReplicaDialog}
+                handleClose={toggleEditReplica}
+                value={editReplica}
+                handleSubmit={handleEditReplica}
+                editReplica={setEditReplica}
+            />
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -54,7 +69,7 @@ export default function DetailCell({ containers, name, namespace }) {
                             title="Delete"
                         />
                         <AnimatedButton
-                            onClick={handleEditReplicas}
+                            onClick={toggleEditReplica}
                             disableElevation
                             size="medium"
                             variant="contained"
