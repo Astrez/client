@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { FETCH_ERROR, FETCH_PODS } from 'store/constant';
-
+const BASE_API_URL = 'http://127.0.0.1:5000';
 //Load Deployments
 export const loadPods = () => async (dispatch) => {
     //Headers
     const config = {
         headers: {
-            'Content-type': 'multipart/form-data'
+            'Content-type': 'application/json'
         },
         method: 'GET',
-        url: 'http://127.0.0.1:5000/api/deployment/pod/get'
+        url: `${BASE_API_URL}/api/deployment/pod/get`
     };
     console.log('sending request');
     try {

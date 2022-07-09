@@ -12,6 +12,8 @@ import FormInput from 'ui-component/form/input';
 import FileUpload from './FileUpload';
 import axios from 'axios';
 import CustomSnackBar from 'ui-component/snackbar';
+const BASE_API_URL = 'http://127.0.0.1:5000';
+
 export default function CreateDeploymentFile() {
     const [formSubmission, setFormSubmission] = useState({});
     const scriptedRef = useScriptRef();
@@ -23,7 +25,7 @@ export default function CreateDeploymentFile() {
             },
             data: values,
             method: 'POST',
-            url: 'http://127.0.0.1:5000/api/deployment/upload'
+            url: `${BASE_API_URL}/api/deployment/upload`
         };
         const response = await axios(config);
         console.log(response.data);

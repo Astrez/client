@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { DELETE_DEPLOYMENT, EDIT_IMAGE, FETCH_DEPLOYMENTS, FETCH_ERROR, REPLACE_REPLICAS } from 'store/constant';
-
+const BASE_API_URL = 'http://127.0.0.1:5000';
 //Load Deployments
 export const loadDeployments = () => async (dispatch) => {
     //Headers
     const config = {
         headers: {
-            'Content-type': 'multipart/form-data'
+            'Content-type': 'application/json'
         },
         method: 'GET',
-        url: 'http://127.0.0.1:5000/api/deployment/get'
+        url: `${BASE_API_URL}/api/deployment/get`
     };
     console.log('sending request');
     try {
@@ -35,7 +35,7 @@ export const deleteDeployment =
             },
             data: { name, namespace },
             method: 'POST',
-            url: 'http://127.0.0.1:5000/api/deployment/delete'
+            url: `${BASE_API_URL}/api/deployment/delete`
         };
         try {
             await axios(config);
@@ -61,7 +61,7 @@ export const editReplicas =
             },
             data,
             method: 'POST',
-            url: 'http://127.0.0.1:5000/api/deployment/update/replicas'
+            url: `${BASE_API_URL}/api/deployment/update/replicas`
         };
         try {
             await axios(config);
@@ -88,7 +88,7 @@ export const editImage =
             },
             data: data,
             method: 'POST',
-            url: 'http://127.0.0.1:5000/api/deployment/update/image'
+            url: `${BASE_API_URL}/api/deployment/update/image`
         };
         try {
             await axios(config);

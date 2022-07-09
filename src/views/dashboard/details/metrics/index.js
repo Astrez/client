@@ -3,15 +3,16 @@ import MainCard from 'ui-component/cards/MainCard';
 import DetailsTable from './table/DetailsTable';
 import axios from 'axios';
 
+const BASE_API_URL = 'http://127.0.0.1:5000';
 export default function Metrics() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const config = {
             headers: {
-                'Content-type': 'multipart/form-data'
+                'Content-type': 'application/json'
             },
             method: 'GET',
-            url: 'http://127.0.0.1:5000/api/deployment/metrics'
+            url: `${BASE_API_URL}/api/deployment/metrics`
         };
         axios(config)
             .then((response) => {
