@@ -1,28 +1,38 @@
-import { v4 as uuid } from 'uuid';
 // action - state management
-import { ADD_ITEM, REMOVE_ITEM } from 'store/constant';
+import { DELETE_DEPLOYMENT, EDIT_IMAGE, FETCH_DEPLOYMENTS, FETCH_ERROR, REPLACE_REPLICAS } from 'store/constant';
 export const initialState = {
-    startDeploymentOptions: [
-        { id: uuid(), name: 'deploymentName', value: '', label: 'Deployment Name' },
-        { id: uuid(), name: 'containerName', value: '', label: 'Container Name' },
-        { id: uuid(), name: 'containerImage', value: '', label: 'Container Image' },
-        { id: uuid(), name: 'deploymentNamespace', value: '', label: 'Deployment Namespace' },
-        { id: uuid(), name: 'port', value: '', label: 'Port', type: 'number' },
-        { id: uuid(), name: 'target', value: '', label: 'Target' },
-        { id: uuid(), name: 'replicas', value: '', label: 'Replicas' }
-    ]
+    deployments: [],
+    error: undefined
 };
 
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
 
 const customizationReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_ITEM:
+        case FETCH_DEPLOYMENTS:
+            return {
+                ...state,
+                deployments: action.payload,
+                error: null
+            };
+        case FETCH_ERROR:
+            return {
+                ...state,
+                deployments: [],
+                error: action.payload.message
+            };
+        case DELETE_DEPLOYMENT:
             return {
                 ...state
             };
-        case REMOVE_ITEM:
-            return { ...state };
+        case REPLACE_REPLICAS:
+            return {
+                ...state
+            };
+        case EDIT_IMAGE:
+            return {
+                ...state
+            };
         default:
             return state;
     }

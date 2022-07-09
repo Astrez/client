@@ -1,30 +1,21 @@
 const columns = [
     { id: 'arrow', label: '', minWidth: 10 },
-    { id: 'revision', label: 'Revision', minWidth: 150 },
-    { id: 'containerName', label: 'Container Name', minWidth: 100 },
+    { id: 'deploymentName', label: 'Deployment Name', minWidth: 100 },
+    { id: 'namespace', label: 'Namespace', minWidth: 100 },
     {
-        id: 'containerImage',
-        label: 'Container Image',
-        minWidth: 150,
-        align: 'right'
+        id: 'revision',
+        label: 'Revision',
+        minWidth: 100
     },
     {
         id: 'replicas',
         label: 'Replicas',
-        minWidth: 150,
-        align: 'right'
+        minWidth: 100
     },
     {
-        id: 'limits',
-        label: 'Limits',
-        minWidth: 150,
-        align: 'right'
-    },
-    {
-        id: 'requests',
-        label: 'Requests',
-        minWidth: 150,
-        align: 'right'
+        id: 'containers',
+        label: 'Containers',
+        minWidth: 100
     }
 ];
 export default columns;

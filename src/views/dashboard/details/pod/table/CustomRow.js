@@ -23,7 +23,7 @@ export default function CustomRow(props) {
                     {row.name}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}asdf</StyledTableCell>
                 <StyledTableCell align="right">{row.fat}</StyledTableCell>
                 <StyledTableCell align="right">{row.protein}</StyledTableCell>
                 <StyledTableCell align="right">{row.protein}</StyledTableCell>

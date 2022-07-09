@@ -2,7 +2,6 @@ import React from 'react';
 import { IconButton, Collapse, Box } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import PropTypes from 'prop-types';
 import DetailCell from './DetailCell';
 import StyledTableRow from 'ui-component/table/StyledTableRow';
 import StyledTableCell from 'ui-component/table/StyledTableCell';
