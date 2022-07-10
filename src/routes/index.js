@@ -18,12 +18,9 @@ const CreateDeployment = Loadable(lazy(() => import('views/pages/deployment/crea
 const CreateDeploymentFile = Loadable(lazy(() => import('views/pages/deployment/create/upload')));
 const CreateDeploymentForm = Loadable(lazy(() => import('views/pages/deployment/create/form')));
 const DeploymentDetails = Loadable(lazy(() => import('views/pages/deployment/details')));
-const ReplaceReplicas = Loadable(lazy(() => import('views/pages/deployment/replace-replica')));
 const PodDetails = Loadable(lazy(() => import('views/dashboard/details/pod')));
 const Metrics = Loadable(lazy(() => import('views/dashboard/details/metrics')));
 const AutoScalar = Loadable(lazy(() => import('views/pages/autoscaler')));
-const UpdateDeployment = Loadable(lazy(() => import('views/pages/deployment/update')));
-const DeleteDeployment = Loadable(lazy(() => import('views/pages/deployment/delete')));
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
@@ -60,20 +57,8 @@ export default function ThemeRoutes() {
                     element: <DeploymentDetails />
                 },
                 {
-                    path: '/deployment/replace-replicas',
-                    element: <ReplaceReplicas />
-                },
-                {
                     path: '/deployment/pod',
                     element: <PodDetails />
-                },
-                {
-                    path: '/deployment/update',
-                    element: <UpdateDeployment />
-                },
-                {
-                    path: '/deployment/delete',
-                    element: <DeleteDeployment />
                 },
                 {
                     path: '/deployment/autoscaler',

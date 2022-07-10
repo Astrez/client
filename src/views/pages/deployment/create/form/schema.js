@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 const createDeploymentSchema = [
     Yup.object().shape({
         deploymentName: Yup.string().min(3).max(255).required('Deployment Name is required'),
+        namespace: Yup.string().min(3).max(255),
         label: Yup.string().min(3).max(255).required('Label is required'),
         replicas: Yup.number().min(1).max(3).required('Replicas is required'),
         containers: Yup.array()
@@ -32,6 +33,7 @@ const createDeploymentSchema = [
 ];
 const initialValues = {
     deploymentName: '123',
+    namespace: 'default',
     label: '123',
     replicas: '1',
     containers: [

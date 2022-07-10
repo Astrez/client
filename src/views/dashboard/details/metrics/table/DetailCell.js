@@ -26,7 +26,6 @@ export default function DetailCell() {
                     <StyledTableCell align="right">Total price ($)</StyledTableCell>
                 </StyledTableRow>
             </TableHead> */}
-            DetailCell
         </div>
     );
 }

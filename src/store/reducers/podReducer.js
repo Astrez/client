@@ -1,7 +1,7 @@
 // action - state management
-import { DELETE_DEPLOYMENT, EDIT_IMAGE, FETCH_DEPLOYMENTS, FETCH_ERROR, REPLACE_REPLICAS } from 'store/constant';
+import { FETCH_ERROR, FETCH_PODS, REPLACE_REPLICAS } from 'store/constant';
 export const initialState = {
-    deployments: [],
+    podDetails: [],
     error: undefined
 };
 
@@ -9,30 +9,19 @@ export const initialState = {
 
 const customizationReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_DEPLOYMENTS:
+        case FETCH_PODS:
             return {
                 ...state,
-                deployments: action.payload,
+                podDetails: action.payload,
                 error: null
             };
         case FETCH_ERROR:
             return {
                 ...state,
-                deployments: [],
+                podDetails: [],
                 error: action.payload.message
             };
-        case DELETE_DEPLOYMENT:
-            return {
-                ...state
-            };
-        case REPLACE_REPLICAS:
-            return {
-                ...state
-            };
-        case EDIT_IMAGE:
-            return {
-                ...state
-            };
+
         default:
             return state;
     }

@@ -15,10 +15,13 @@ import useScriptRef from 'hooks/useScriptRef';
 import AnimatedButton from 'ui-component/form/button/animated';
 import DeploymentDetails from './DeploymentDetails';
 import ServiceDetails from './ServiceDetails';
+import axios from 'axios';
+import CustomSnackBar from 'ui-component/snackbar';
 
 // ==============================|| Create Deployment Page ||============================== //
-
-const CreateDeploymentForm = ({ ...others }) => {
+const BASE_API_URL = 'http://127.0.0.1:5000';
+const CreateDeploymentForm = () => {
+    const [formSubmission, setFormSubmission] = useState({});
     const theme = useTheme();
     const scriptedRef = useScriptRef();
 
@@ -29,12 +32,32 @@ const CreateDeploymentForm = ({ ...others }) => {
     function _handleBack() {
         setActiveStep(activeStep - 1);
     }
-    const handleSubmit = (values) => {
-        console.log(values);
+    const handleSubmit = async (values) => {
+        const config = {
+            headers: {
+                'Content-type': 'application/json'
+            },
+            method: 'POST',
+            url: `${BASE_API_URL}/api/deployment/create`
+        };
+        const response = await axios(config);
+        console.log(response.data);
+        setFormSubmission({
+            message: response.data.status,
+            type: 'info'
+        });
     };
 
     return (
         <MainCard title="Create Deployment">
+            <CustomSnackBar
+                open={formSubmission.message ? true : false}
+                handleClose={() => {
+                    setFormSubmission({});
+                }}
+                message={formSubmission.message}
+                type="info"
+            />
             <Box sx={{ mt: 3, mb: 5, ml: 2, mr: 2 }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => (
